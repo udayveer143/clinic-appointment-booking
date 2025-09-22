@@ -1,59 +1,126 @@
-# AppointmentApp
+# Angular Appointment Booking App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
+## Overview
+This is a **frontend Angular application** for a healthcare clinic appointment booking system.  
+It interacts with a .NET Core Web API backend to **book, update, delete, and view appointments**.  
 
-## Development server
+The app includes:
 
-To start a local development server, run:
+- Form to book or edit appointments  
+- List of all appointments with search and filter  
+- Client-side and server-side validation  
+- Bootstrap styling and responsive layout  
+- Display of success and error messages via Bootstrap alerts  
+- Date/time pickers for better UX  
+
+---
+
+## Features
+
+1. **Book Appointment**: Fill form with patient name, doctor name, start/end date-time.  
+2. **Edit Appointment**: Update existing appointments.  
+3. **Delete Appointment**: Cancel appointments directly from the list.  
+4. **Search / Filter**: By patient name, doctor name, start date, end date.  
+5. **Validation**:
+   - Required fields  
+   - Max length for text fields  
+   - Start time must be in the future  
+   - End time must be after start time  
+   - Server-side validation errors shown in a single string alert  
+
+---
+
+## Technologies Used
+
+- **Angular 20.3.2**  
+- **Node.js 22.19.0**  
+- **Bootstrap 5**  
+- **Reactive Forms**  
+- **Angular Router & Standalone Components**  
+- **HTTP Client** for API interaction  
+
+---
+
+## Project Setup
+
+### 1. Clone Repository
+
+```bash
+git clone <your-angular-repo-url>
+cd <your-angular-project-folder>
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Serve the Application Locally
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The app will run on `http://localhost:4200` by default.
 
-## Code scaffolding
+### 4. Configuration
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Ensure the **backend API** is running and CORS is allowed (`http://localhost:4200`)  
+- Update `environment.ts` if the API URL is different.
 
-```bash
-ng generate component component-name
+---
+
+## Folder Structure
+
+```
+src/
+  app/
+    appointments/
+      appointment-form/       # Form component for booking/editing
+      appointment-list/       # List and filter component
+    models/                   # Appointment interface
+    services/                 # API service
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
+
+## Usage
+
+1. Navigate to `http://localhost:4200/appointments`.  
+2. Use the **filters** at the top to search by doctor, patient, or date range.  
+3. Click **"Add Appointment"** to open the form.  
+4. Fill all required fields and click **Save**.  
+5. Edit or Delete existing appointments using the corresponding buttons in the list.  
+6. All validation errors (client-side or server-side) will appear as **Bootstrap alerts**.  
+
+---
+
+## Bootstrap / Styling Notes
+
+- Forms and filters are styled using **Bootstrap grid system**.  
+- Alerts show success (`alert-success`) or error (`alert-danger`) messages.  
+- Inputs use **`datetime-local`** for start/end times for better UX.  
+
+---
+
+## Git & Deployment
+
+- Ensure commits are **descriptive and modular**.  
+- Example commit: `feat: add appointment form with validation`.  
+- For deployment, you can build production-ready code:
 
 ```bash
-ng generate --help
+ng build --prod
 ```
 
-## Building
+- Copy the `dist/` folder contents to your web server.  
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## Assumptions
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Backend API is already running and accessible.  
+- No authentication/authorization implemented yet.  
+- Using Bootstrap for styling; no advanced UI framework.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
