@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\InterviewDemo\\clinic-appointment-booking\\backend\\AppointmentAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{24CDD981-63CB-440D-9B1C-397B42838700}|AppointmentAPI\\AppointmentAPI.csproj|c:\\interviewdemo\\clinic-appointment-booking\\backend\\appointmentapi\\appointmentapi\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24CDD981-63CB-440D-9B1C-397B42838700}|AppointmentAPI\\AppointmentAPI.csproj|solutionrelative:appointmentapi\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{24CDD981-63CB-440D-9B1C-397B42838700}|AppointmentAPI\\AppointmentAPI.csproj|c:\\interviewdemo\\clinic-appointment-booking\\backend\\appointmentapi\\appointmentapi\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{24CDD981-63CB-440D-9B1C-397B42838700}|AppointmentAPI\\AppointmentAPI.csproj|solutionrelative:appointmentapi\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{24CDD981-63CB-440D-9B1C-397B42838700}|AppointmentAPI\\AppointmentAPI.csproj|c:\\interviewdemo\\clinic-appointment-booking\\backend\\appointmentapi\\appointmentapi\\validation\\futureornowdateattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{24CDD981-63CB-440D-9B1C-397B42838700}|AppointmentAPI\\AppointmentAPI.csproj|solutionrelative:appointmentapi\\validation\\futureornowdateattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24CDD981-63CB-440D-9B1C-397B42838700}|AppointmentAPI\\AppointmentAPI.csproj|c:\\interviewdemo\\clinic-appointment-booking\\backend\\appointmentapi\\appointmentapi\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24CDD981-63CB-440D-9B1C-397B42838700}|AppointmentAPI\\AppointmentAPI.csproj|solutionrelative:appointmentapi\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{24CDD981-63CB-440D-9B1C-397B42838700}|AppointmentAPI\\AppointmentAPI.csproj|c:\\interviewdemo\\clinic-appointment-booking\\backend\\appointmentapi\\appointmentapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,11 +46,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "EndAfterStartDateAttribute.cs",
               "DocumentMoniker": "C:\\InterviewDemo\\clinic-appointment-booking\\backend\\AppointmentAPI\\AppointmentAPI\\Validation\\EndAfterStartDateAttribute.cs",
               "RelativeDocumentMoniker": "AppointmentAPI\\Validation\\EndAfterStartDateAttribute.cs",
@@ -63,7 +63,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "FutureOrNowDateAttribute.cs",
               "DocumentMoniker": "C:\\InterviewDemo\\clinic-appointment-booking\\backend\\AppointmentAPI\\AppointmentAPI\\Validation\\FutureOrNowDateAttribute.cs",
               "RelativeDocumentMoniker": "AppointmentAPI\\Validation\\FutureOrNowDateAttribute.cs",
@@ -89,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Appointment.cs",
               "DocumentMoniker": "C:\\InterviewDemo\\clinic-appointment-booking\\backend\\AppointmentAPI\\AppointmentAPI\\Models\\Appointment.cs",
               "RelativeDocumentMoniker": "AppointmentAPI\\Models\\Appointment.cs",
@@ -102,13 +102,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "AppointmentsController.cs",
               "DocumentMoniker": "C:\\InterviewDemo\\clinic-appointment-booking\\backend\\AppointmentAPI\\AppointmentAPI\\Controllers\\AppointmentsController.cs",
               "RelativeDocumentMoniker": "AppointmentAPI\\Controllers\\AppointmentsController.cs",
               "ToolTip": "C:\\InterviewDemo\\clinic-appointment-booking\\backend\\AppointmentAPI\\AppointmentAPI\\Controllers\\AppointmentsController.cs",
               "RelativeToolTip": "AppointmentAPI\\Controllers\\AppointmentsController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAA5wEAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-19T05:32:30.351Z",
               "EditorCaption": ""

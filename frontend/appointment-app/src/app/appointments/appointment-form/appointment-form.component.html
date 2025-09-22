@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <h2>{{ isEdit ? 'Edit Appointment' : 'Book Appointment' }}</h2>
+<!-- ✅ API error alert -->
+  <div *ngIf="alertMessage" class="alert alert-danger">
+    {{ alertMessage }}
+  </div>
+  <form [formGroup]="appointmentForm" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label>Patient Name</label>
+      <input type="text" class="form-control" formControlName="patientName">
+      <div *ngIf="patientName?.invalid && patientName?.touched" class="text-danger">
+        <div *ngIf="patientName?.errors?.['required']">Patient name is required.</div>
+        <div *ngIf="patientName?.errors?.['maxlength']">Max 100 characters.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Doctor Name</label>
+      <input type="text" class="form-control" formControlName="doctorName">
+      <div *ngIf="doctorName?.invalid && doctorName?.touched" class="text-danger">
+        <div *ngIf="doctorName?.errors?.['required']">Doctor name is required.</div>
+        <div *ngIf="doctorName?.errors?.['maxlength']">Max 100 characters.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Start Time</label>
+      <input type="datetime-local" class="form-control" formControlName="startTime">
+      <div *ngIf="startTime?.invalid && startTime?.touched" class="text-danger">
+        Start time is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>End Time</label>
+      <input type="datetime-local" class="form-control" formControlName="endTime">
+      <div *ngIf="endTime?.invalid && endTime?.touched" class="text-danger">
+        End time is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ isEdit ? 'Update' : 'Save' }}</button>
+    <a routerLink="/appointments" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>

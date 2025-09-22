@@ -1,0 +1,42 @@
+<h2>Appointments</h2>
+
+<div class="row mb-3">
+  <div class="col">
+    <input class="form-control" placeholder="Patient Name" [(ngModel)]="search.patientName" (ngModelChange)="filter()">
+  </div>
+  <div class="col">
+    <input class="form-control" placeholder="Doctor Name" [(ngModel)]="search.doctorName" (ngModelChange)="filter()">
+  </div>
+  <div class="col">
+    <input type="date" class="form-control" [(ngModel)]="search.startDate" (ngModelChange)="filter()">
+  </div>
+  <div class="col">
+    <input type="date" class="form-control" [(ngModel)]="search.endDate" (ngModelChange)="filter()">
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Patient</th>
+      <th>Doctor</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appt of filteredAppointments">
+      <td>{{appt.patientName}}</td>
+      <td>{{appt.doctorName}}</td>
+      <td>{{appt.startTime | date:'short'}}</td>
+      <td>{{appt.endTime | date:'short'}}</td>
+      <td>
+        <a [routerLink]="['/appointments/edit', appt.id]" class="btn btn-sm btn-primary me-2">Edit</a>
+        <button class="btn btn-sm btn-danger" (click)="deleteAppointment(appt.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a routerLink="/appointments/create" class="btn btn-success">Add Appointment</a>
