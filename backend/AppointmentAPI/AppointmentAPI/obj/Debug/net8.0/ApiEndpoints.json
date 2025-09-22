@@ -47,6 +47,32 @@
   },
   {
     "ContainingType": "AppointmentAPI.Controllers.AppointmentsController",
+    "Method": "GetAppointment",
+    "RelativePath": "appointments/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "AppointmentAPI.Models.Appointment",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AppointmentAPI.Controllers.AppointmentsController",
     "Method": "UpdateAppointment",
     "RelativePath": "appointments/{id}",
     "HttpMethod": "PUT",

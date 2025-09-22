@@ -1,8 +1,6 @@
-﻿using AppointmentAPI.Data;
-using AppointmentAPI.Models;
-using Microsoft.AspNetCore.Http;
+﻿using AppointmentAPI.Models;
+using AppointmentAPI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AppointmentAPI.Controllers
 {
@@ -10,73 +8,57 @@ namespace AppointmentAPI.Controllers
     [Route("appointments")]
     public class AppointmentsController : ControllerBase
     {
-        private readonly AppointmentContext _context;
+        private readonly IAppointmentService _appointmentService;
 
-        public AppointmentsController(AppointmentContext context)
+        public AppointmentsController(IAppointmentService appointmentService)
         {
-            _context = context;
+            _appointmentService = appointmentService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
-            => await _context.Appointments.ToListAsync();
+            => Ok(await _appointmentService.GetAppointmentsAsync());
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Appointment>> GetAppointment(int id)
+        {
+            var appointment = await _appointmentService.GetAppointmentByIdAsync(id);
+            if (appointment == null) return NotFound();
+            return Ok(appointment);
+        }
 
         [HttpPost]
         public async Task<ActionResult<Appointment>> BookAppointment(Appointment appointment)
         {
-            if (string.IsNullOrWhiteSpace(appointment.PatientName) ||
-                string.IsNullOrWhiteSpace(appointment.DoctorName) ||
-                appointment.StartTime == default ||
-                appointment.EndTime <= appointment.StartTime)
-                return BadRequest("Invalid appointment data.");
+            var result = await _appointmentService.BookAppointmentAsync(appointment);
+            if (!result.Success)
+                return BadRequest(result.ErrorMessage);
 
-            var overlap = await _context.Appointments.AnyAsync(a =>
-                a.DoctorName == appointment.DoctorName &&
-                a.EndTime > appointment.StartTime &&
-                a.StartTime < appointment.EndTime);
-
-            if (overlap)
-                return Conflict("Appointment overlaps with existing booking for this doctor.");
-
-            _context.Appointments.Add(appointment);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetAppointments), new { id = appointment.Id }, appointment);
+            return CreatedAtAction(nameof(GetAppointment), new { id = result.Appointment!.Id }, result.Appointment);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAppointment(int id, Appointment updatedAppointment)
         {
-            var appointment = await _context.Appointments.FindAsync(id);
-            if (appointment == null) return NotFound();
-
-            var overlap = await _context.Appointments.AnyAsync(a =>
-                a.Id != id &&
-                a.DoctorName == updatedAppointment.DoctorName &&
-                a.EndTime > updatedAppointment.StartTime &&
-                a.StartTime < updatedAppointment.EndTime);
-
-            if (overlap)
-                return Conflict("Appointment overlaps with existing booking for this doctor.");
-
-            appointment.PatientName = updatedAppointment.PatientName;
-            appointment.StartTime = updatedAppointment.StartTime;
-            appointment.EndTime = updatedAppointment.EndTime;
-            appointment.DoctorName = updatedAppointment.DoctorName;
-
-            await _context.SaveChangesAsync();
+            var result = await _appointmentService.UpdateAppointmentAsync(id, updatedAppointment);
+            if (!result.Success)
+            {
+                if (result.ErrorMessage == "Appointment not found.") return NotFound();
+                return BadRequest(result.ErrorMessage);
+            }
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> CancelAppointment(int id)
         {
-            var appointment = await _context.Appointments.FindAsync(id);
-            if (appointment == null) return NotFound();
-
-            _context.Appointments.Remove(appointment);
-            await _context.SaveChangesAsync();
+            var result = await _appointmentService.CancelAppointmentAsync(id);
+            if (!result.Success)
+            {
+                if (result.ErrorMessage == "Appointment not found.") return NotFound();
+                return BadRequest(result.ErrorMessage);
+            }
             return NoContent();
         }
     }
-
 }

@@ -90,6 +90,44 @@
       }
     },
     "/appointments/{id}": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Appointment"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Appointment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Appointment"
+                }
+              }
+            }
+          }
+        }
+      },
       "put": {
         "tags": [
           "Appointments"
@@ -156,6 +194,12 @@
   "components": {
     "schemas": {
       "Appointment": {
+        "required": [
+          "doctorName",
+          "endTime",
+          "patientName",
+          "startTime"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -163,8 +207,14 @@
             "format": "int32"
           },
           "patientName": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "doctorName": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
           },
           "startTime": {
             "type": "string",
@@ -173,10 +223,6 @@
           "endTime": {
             "type": "string",
             "format": "date-time"
-          },
-          "doctorName": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
